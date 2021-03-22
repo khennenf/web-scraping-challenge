@@ -11,8 +11,7 @@ def init_browser():
 
 def scrape_info():
     browser = init_browser()
-    
-    
+        
     #Visit the url
     url = 'https://mars.nasa.gov/news/'
     browser.visit(url)
@@ -41,7 +40,6 @@ def scrape_info():
     }
 
     browser.quit()
-
     return results
 
 
