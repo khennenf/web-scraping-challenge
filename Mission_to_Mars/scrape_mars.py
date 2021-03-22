@@ -1,38 +1,50 @@
-# from splinter import Browser
-# from bs4 import BeautifulSoup as bs
-# import time
-# import requests
-# # import pandas as pd
-# from webdriver_manager.chrome import ChromeDriverManager
+from splinter import Browser
+from bs4 import BeautifulSoup as bs
+import time
+import requests
+# import pandas as pd
+from webdriver_manager.chrome import ChromeDriverManager
 
-# def init_browser():
-#         executable_path = {'executable_path': ChromeDriverManager().install()}
-#         return Browser("chrome", **executable_path, headless=False)
+def init_browser():
+        executable_path = {'executable_path': ChromeDriverManager().install()}
+        return Browser("chrome", **executable_path, headless=False)
 
-# def scrape_info():
-#     browser = init_browser()
+def scrape_info():
+    browser = init_browser()
     
-#     #Visit the url
-#     url = 'https://mars.nasa.gov/news/'
-#     browser.visit(url)
+    
+    #Visit the url
+    url = 'https://mars.nasa.gov/news/'
+    browser.visit(url)
 
-#     #Retrieve page with the requests module
-#     response = requests.get(url)
+    #Retrieve page with the requests module
+    response = requests.get(url)
 
-#     #Create BeautifulSoup object; parse with 'html.parser'
-#     soup = bs(response.text, 'html.parser')
+    #Create BeautifulSoup object; parse with 'html.parser'
+    soup = bs(response.text, 'html.parser')
 
-#     #Get results
-#     results = soup.find('div', class_='content_title')
+    #Get results
+    results = soup.find('div', class_='content_title')
 
-#     #Save news_title
-#     news_title = results.a.text
+    #Save news_title
+    news_title = results.a.text
 
-#     #Get next results
-#     results2 = results2 = soup.find('div', class_= "rollover_description_inner")
+    #Get next results
+    results2 = soup.find('div', class_= "rollover_description_inner")
 
-#     #Save news_preview
-#     news_p = results2.text.strip()
+    #Save news_preview
+    news_p = results2.text.strip()
+
+    results = {
+        "news_title": news_title,
+        "news_p": news_p
+    }
+
+    browser.quit()
+
+    return results
+
+
 
 #     #Break between sites
 #     time.sleep(1)
