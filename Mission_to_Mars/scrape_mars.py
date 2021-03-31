@@ -16,6 +16,8 @@ def scrape_info():
     url = 'https://mars.nasa.gov/news/'
     browser.visit(url)
 
+    time.sleep(1)
+
     # Retrieve page with the requests module
     response = requests.get(url)
 
@@ -34,6 +36,7 @@ def scrape_info():
     #Get text from article description/define variable
     news_p = results2.text.strip()
 
+   
     #Visit the url for the image
     getimage_url = 'https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/index.html'
     browser.visit(getimage_url)
@@ -66,9 +69,17 @@ def scrape_info():
 ]
 
 
+    mars_data = {
+        "news_title": news_title,
+        "news_preview": news_p,
+        "image": featured_image_url,
+        # "info_table": tables,
+        "hemishphere_image_urls": hemisphere_image_urls
+    }
 
+    browser.quit()
 
-
+    return mars_data
 
 
 
