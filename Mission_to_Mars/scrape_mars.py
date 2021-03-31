@@ -13,41 +13,41 @@ def scrape_info():
     browser = init_browser()
         
     # #Visit the url
-    # url = 'https://mars.nasa.gov/news/'
-    # browser.visit(url)
+    url = 'https://mars.nasa.gov/news/'
+    browser.visit(url)
 
     # #Retrieve page with the requests module
-    # # response = requests.get(url)
+    response = requests.get(url)
 
     # #Create BeautifulSoup object; parse with 'html.parser'
-    # soup = bs(browser.html, 'html.parser')
+    soup = bs(browser.html, 'html.parser')
 
     # #Get results
-    # new_results = soup.find('div', class_='content_title')
+    new_results = soup.find('div', class_='content_title')
 
     # #Save news_title
-    # # news_title = new_results.a.text
-    # news_title = new_results.get_text()
+    # news_title = new_results.a.text
+    news_title = new_results.get_text()
 
     # #Get next results
-    # results2 = soup.find('div', class_= "rollover_description_inner")
+    results2 = soup.find('div', class_= "rollover_description_inner")
 
     # #Save news_preview
-    # news_p = results2.text.strip()
+    news_p = results2.text.strip()
 
-    # results = {
-    #     "news_title_1": news_title,
-    #     "news_p_1": news_p
-    # }
-    # print(results)
+    results = {
+        "news_title_1": news_title,
+        "news_p_1": news_p
+    }
+    
 
-    # browser.quit()
-    # return results
+    browser.quit()
+    return results
 
 
 
 #     #Break between sites
-#     time.sleep(1)
+    time.sleep(1)
 
 #     #Visit url for image
     url_image = 'https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/index.html'
