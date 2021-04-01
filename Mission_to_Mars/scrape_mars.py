@@ -78,6 +78,7 @@ def scrape_info():
         "news_title": news_title,
         "news_preview": news_p,
         "image": featured_image_url,
+        "image2": image,
         "info_table": html_table_clean,
         "hemishphere_image_urls": hemisphere_image_urls
     }
