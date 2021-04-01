@@ -59,6 +59,11 @@ def scrape_info():
     #Use Pandas to scrape info in to datatable
     facts_url = 'https://space-facts.com/mars/'
     tables = pd.read_html(facts_url)
+    df = tables[0]
+    df.columns = ['Description', '']
+    html_table = df.to_html()
+    html_table_clean = html_table.replace('\n', '')
+
 
     #Informational URLSs
     hemisphere_image_urls = [
@@ -73,7 +78,7 @@ def scrape_info():
         "news_title": news_title,
         "news_preview": news_p,
         "image": featured_image_url,
-        # "info_table": tables,
+        "info_table": html_table_clean,
         "hemishphere_image_urls": hemisphere_image_urls
     }
 
