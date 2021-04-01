@@ -48,7 +48,7 @@ def scrape_info():
     soup_image = bs(response_image.text, 'html.parser')
 
     #Get image from soup object
-    image = soup_image.find_all('div', class_ ='floating_text_area')
+    # image = soup_image.find_all('div', class_ ='floating_text_area')
 
     #Use splinter to select button to see full image
     browser.links.find_by_partial_text('FULL').click()
@@ -78,7 +78,7 @@ def scrape_info():
         "news_title": news_title,
         "news_preview": news_p,
         "image": featured_image_url,
-        "image2": image,
+        # "image2": image,
         "info_table": html_table_clean,
         "hemishphere_image_urls": hemisphere_image_urls
     }
