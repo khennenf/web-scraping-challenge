@@ -70,7 +70,7 @@ def scrape_info():
     {"title": "Cerberus Hemisphere Enhanced", "img_url": "https://astropedia.astrogeology.usgs.gov/download/Mars/Viking/cerberus_enhanced.tif/full.jpg"},
     {"title": "Schiaparelli Hemisphere Enhanced", "img_url": "https://astropedia.astrogeology.usgs.gov/download/Mars/Viking/schiaparelli_enhanced.tif/full.jpg"},
     {"title": "Syrtis Major Hemisphere Enhanced", "img_url": "https://astropedia.astrogeology.usgs.gov/download/Mars/Viking/syrtis_major_enhanced.tif/full.jpg"},
-    {"title": "Valles Marineris Hemisphere Enhanced", "img_url": "https://astropedia.astrogeology.usgs.gov/download/Mars/Viking/valles_marineris_enhanced.tif/full.jpg"},
+    {"title": "Valles Marineris Hemisphere Enhanced", "img_url": "https://astropedia.astrogeology.usgs.gov/download/Mars/Viking/valles_marineris_enhanced.tif/full.jpg"}
 ]
 
 
@@ -80,11 +80,12 @@ def scrape_info():
         "image": featured_image_url,
         # "image2": image,
         "info_table": html_table_clean,
-        "hemishphere_image_urls": hemisphere_image_urls
+        "hemisphere_image_urls": hemisphere_image_urls
     }
 
     browser.quit()
 
+    print(mars_data)
     return mars_data
 
 
