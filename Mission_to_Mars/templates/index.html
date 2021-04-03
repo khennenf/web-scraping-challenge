@@ -15,29 +15,19 @@
       <h1>MISSION TO MARS</h1>
       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
     </div>
+    <h1>Latest Mars News</h1>
+    <h2>{{ mars.news_title }}</h2>
+    <h3>{{ mars.news_preview }}</h3>
+<div>
+    <h1>Featured Mars Image</h1>
+    <h2>{{ mars.html_table_clean }}</h2>
+ 
+
+    <a target="_blank" href="https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/image/featured/mars3.jpg">
+    <img src="https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/image/featured/mars3.jpg" alt="Featured Image" />
 
 
-    <ul>
-      
-      <!-- <--the text, rendered out between the moustaches-->   
-      <!-- <li>{{ destination_data}}</li> -->
-      <li>{{mars.news_title}}</li>
-      <li>{{mars.news_preview}}</li>
-      <li>{{mars.image}}</li>
-      <li>{{mars.news_title}}</li>
-      <li>{{mars.html_table_clean}}</li>
-    
-    </ul>
-  </div>
-    
-    <div class="row" style="background-color: white;">
-    <div class="table-responsive">
-      <table class="table table-striped">
-        <td>
-        {{mars.html_table_clean}}
-      </td>
-      </table>
-    </div> 
+
   </div>
 </body>
 
