@@ -20,7 +20,19 @@
     <h3>{{ mars.news_preview }}</h3>
 <div>
     <h1>Featured Mars Image</h1>
-    <h2>{{ mars.hemisphere_image_urls[0]["title"] }}</h2>
+    <!-- <h2>{{ mars.hemisphere_image_urls[0]["title"] }}</h2> -->
+    <table class="table-striped">
+    {% for item in mars.hemisphere_image_urls %}
+    <tr>
+      <td>
+        {{ item ["title"] }}
+      </td>
+      <td>
+        <img src ="{{ item ['img_url'] }}" height=100 width=100> </img>
+      </td>
+    </tr>
+    {% endfor %}
+    </table>
  
 
     <a target="_blank" href="https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/image/featured/mars3.jpg">
