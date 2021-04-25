@@ -3,11 +3,11 @@ from bs4 import BeautifulSoup as bs
 import time
 import requests
 import pandas as pd
-from webdriver_manager.chrome import ChromeDriverManager
+# from webdriver_manager.chrome import ChromeDriverManager
 
 def init_browser():
         executable_path = {'executable_path': "./chromedriver"}
-        return Browser("chrome", **executable_path, headless=False)
+        return Browser("chrome", **executable_path, headless=True)
 
 def scrape_info():
     browser = init_browser()
@@ -51,10 +51,10 @@ def scrape_info():
     # image = soup_image.find_all('div', class_ ='floating_text_area')
 
     #Use splinter to select button to see full image
-    browser.links.find_by_partial_text('FULL').click()
+    # browser.links.find_by_partial_text('FULL').click()
 
     #URL for feature image
-    featured_image_url = 'https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/image/featured/mars3.jpg'
+    featured_image_url = "https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/image/featured/mars2.jpg"
 
     #Use Pandas to scrape info in to datatable
     #Get get desired info by index
@@ -101,20 +101,18 @@ def scrape_info():
                 hemisphere_dict.append(temp_dict)
 
 
-    mars_data = {}
+    mars_data = {
+       "news_title": news_title,
+       "news_preview": news_preview,
+       "featured_image_url": featured_image_url,
+       "html_table_clean": html_table_clean,
+       "hemisphere_dict": hemisphere_dict
+    }
+  
+    browser.quit()
 
-    mars_data['news_title'] = news_title
-    mars_data['news_preview'] = news_preview
-    mars_data['featured_image_url'] = featured_image_url
-    mars_data['html_table_clean'] = html_table_clean
-    mars_data['hemis_dict'] = hemisphere_dict
-
-    
-
-    # browser.quit()
-
-    print(mars_data)
-    # return mars_data
+    #Return results
+    return mars_data
 
 
 

@@ -12,35 +12,56 @@
 <body>
   <div class="container-fluid">
     <div class="jumbotron text-center">
-      <h1>MISSION TO MARS</h1>
+      <h1>Mission To Mars</h1>
       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
     </div>
-    <h1>Latest Mars News</h1>
-    <h2>{{ mars_data.news_title }}</h2>
-    <h3>{{ mars_data.news_preview }}</h3>
-<div>
-    <h1>Featured Mars Image</h1>
-    <!-- <h2>{{ mars.hemisphere_image_urls[0]["title"] }}</h2> -->
-    <table class="table-striped">
-    {% for item in mars.hemisphere_image_urls %}
-    <tr>
-      <td>
-        {{ item ["title"] }}
-      </td>
-      <td>
-        <img src ="{{ item ['img_url'] }}" height=100 width=100> </img>
-      </td>
-    </tr>
-    {% endfor %}
-    </table>
- 
 
-    <a target="_blank" href="https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/image/featured/mars3.jpg">
-    <img src="https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/image/featured/mars3.jpg" alt="Featured Image" />
+
+    <h2>Latest Mars News</h2>
+    <h3>{{ mars_data.news_title }}</h3>
+    <h4>{{ mars_data.news_preview }}</h4>
+
+
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Featured Mars Image</h2>
+        <img src= "{{ mars_data.featured_image_url }}" alt="Featured Mars Image">
+      </div>
+      <div class="col-md-4">
+      </div>
+    </div>
 
 
 
-  </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <p>{{ mars_data.hemisphere_dict[0]['title'] }}</p>
+        <img src="{{ mars_data.hemisphere_dict[0]['img_url'] }}" class="img-thumbnail" alt="Cerberus Hemisphere Enhanced">
+      </div>
+      <div class="col-md-4">
+        <p>{{ mars_data.hemisphere_dict[1]['title'] }}</p>
+        <img src="{{ mars_data.hemisphere_dict[1]['img_url'] }}" class="img-thumbnail" alt="Schiaparelli Hemisphere Enhanced">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <p>{{ mars_data.hemisphere_dict[2]['title'] }}</p>
+        <img src="{{ mars_data.hemisphere_dict[2]['img_url'] }}" class="img-thumbnail" alt="Syrtis Major Hemisphere Enhanced">
+      </div>
+      <div class="col-md-4">
+        <p>{{ mars_data.hemisphere_dict[3]['title'] }}</p>
+        <img src="{{ mars_data.hemisphere_dict[3]['img_url'] }}" class="img-thumbnail" alt="Valles Marineris Hemisphere Enhanced">
+      </div>
+    </div>
+
+
+
+
+
+
+
 </body>
 
 </html>
