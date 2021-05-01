@@ -67,6 +67,11 @@ def scrape_info():
     df.columns = ['Description', '']
     html_table = df.to_html(index=False)
     # html_table_clean = html_table.replace('\n', '')
+    print()
+    print()
+    print(html_table)
+    print()
+    print()
 
     #URL for Hemisphere information
     url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
