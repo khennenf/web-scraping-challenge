@@ -27,8 +27,9 @@
         <h2>Featured Mars Image</h2>
         <img src= "{{ mars_data.featured_image_url }}" alt="Featured Mars Image">
       </div>
-      <div class="col-md-6 text-center">
+      <div class="col-md-6">
         <div style="margin:110px auto 0 auto; float: none; display: block-inline;">
+          <h3>Mars Facts</h3>
           {{  mars_data.html_table.replace("dataframe", "table-striped") | safe }} 
         </div>
       </div>

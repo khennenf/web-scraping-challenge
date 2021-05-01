@@ -1,9 +1,8 @@
 from splinter import Browser
 from bs4 import BeautifulSoup as bs
-import time
 import requests
 import pandas as pd
-# from webdriver_manager.chrome import ChromeDriverManager
+
 
 def init_browser():
         executable_path = {'executable_path': "./chromedriver"}
@@ -15,8 +14,6 @@ def scrape_info():
     #Visit the url for news article information
     url = 'https://mars.nasa.gov/news/'
     browser.visit(url)
-
-    time.sleep(1)
 
     # Retrieve page with the requests module
     response = requests.get(url)
@@ -41,37 +38,20 @@ def scrape_info():
     getimage_url = 'https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/index.html'
     browser.visit(getimage_url)
 
-    # Retrieve page with the requests module
-    # response_image = requests.get(getimage_url)
-
-    # Create BeautifulSoup object; parse with 'html.parser'
-    # soup_image = bs(response_image.text, 'html.parser')
-
-    #Get image from soup object
-    # image = soup_image.find_all('div', class_ ='floating_text_area')
-
-    #Use splinter to select button to see full image
-    # browser.links.find_by_partial_text('FULL').click()
-
     #URL for feature image
     featured_image_url = "https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/image/featured/mars2.jpg"
+
 
     #Use Pandas to scrape info in to datatable
     #Get get desired info by index
     #Rename df columns
     #Convert df to HTMLS
-    #Clean HTML table of '\n'
     facts_url = 'https://space-facts.com/mars/'
     tables = pd.read_html(facts_url)
     df = tables[0]
     df.columns = ['Description', '']
     html_table = df.to_html(index=False)
-    # html_table_clean = html_table.replace('\n', '')
-    print()
-    print()
-    print(html_table)
-    print()
-    print()
+
 
     #URL for Hemisphere information
     url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
@@ -105,7 +85,7 @@ def scrape_info():
                 temp_dict = {'title' : title, 'img_url':img_url}
                 hemisphere_dict.append(temp_dict)
 
-
+    #Build dictionary
     mars_data = {
        "news_title": news_title,
        "news_preview": news_preview,
